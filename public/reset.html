@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reset Password - CampusHub</title>
+
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">⬡</span> CampusHub
+    </a>
+  </div>
+</nav>
+
+<section class="auth-wrapper">
+
+  <div class="auth-card fade-up">
+
+    <div class="auth-icon">🔑</div>
+
+    <h2>Reset Password</h2>
+
+    <p class="auth-subtitle">
+      Enter your email to reset your password.
+    </p>
+
+    <form id="resetForm">
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="student@email.com"/>
+        <div class="form-error"></div>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        Send Reset Link
+      </button>
+
+    </form>
+
+    <div class="success-box" id="successBox">
+      <div class="success-icon">✅</div>
+      <h3>Email Sent</h3>
+      <p>Password reset instructions were sent.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

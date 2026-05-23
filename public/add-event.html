@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Event</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      text-align: center;
+      color: #06b6d4;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #4f46e5;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #94a3b8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>➕ Add Event</h2>
+
+  <input type="text" id="title" placeholder="Event title" />
+  <input type="date" id="date" />
+  <textarea id="description" placeholder="Event description..."></textarea>
+
+  <button onclick="saveEvent()">Save Event</button>
+
+  <a class="back" href="events.html">← Back to Events</a>
+</div>
+
+<script>
+  function saveEvent() {
+    const title = document.getElementById("title").value;
+    const date = document.getElementById("date").value;
+    const description = document.getElementById("description").value;
+
+    if (!title || !date || !description) {
+      alert("Please fill all fields!");
+      return;
+    }
+
+    let events = JSON.parse(localStorage.getItem("events")) || [];
+
+    events.push({
+      title,
+      date,
+      description
+    });
+
+    localStorage.setItem("events", JSON.stringify(events));
+
+    alert("Event added successfully!");
+
+    window.location.href = "events.html";
+  }
+</script>
+
+</body>
+</html>

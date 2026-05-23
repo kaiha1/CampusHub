@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusHub – Academic Events Portal</title>
+
+  <!-- Link to our single shared stylesheet -->
+  <link rel="stylesheet" href="Style.css" />
+
+  <!-- Google Fonts: Syne (headings) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION BAR  (copy this block to all pages)
+       ============================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <!-- Logo / Brand -->
+      <a href="Index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span> CampusHub
+      </a>
+
+      <!-- Hamburger toggle button (shown on mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="Index.html"     class="nav-link active">Home</a></li>
+        <li><a href="events.html"    class="nav-link">Events</a></li>
+        <li><a href="add-event.html" class="nav-link">Add Event</a></li>
+        <li><a href="login.html"     class="nav-link btn-outline-nav">Login</a></li>
+        <li><a href="register.html"  class="nav-link btn-primary-nav">Register</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- =============================================
+       HERO SECTION
+       ============================================= -->
+  <section class="hero">
+
+    <!-- Decorative background blobs (CSS shapes) -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Left: Text Content -->
+    <div class="hero-content fade-in">
+
+      <!-- Small badge above main heading -->
+      <span class="hero-badge">🎓 University Academic Portal</span>
+
+      <h1 class="hero-title">
+        Discover &amp; Join<br />
+        <span class="highlight">Campus Events</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Stay connected with lectures, workshops, seminars, and student
+        activities — all in one place. Never miss what matters.
+      </p>
+
+      <!-- Call-to-action buttons -->
+      <div class="hero-actions">
+        <a href="events.html"    class="btn btn-primary">Browse Events</a>
+        <a href="register.html"  class="btn btn-ghost">Create Account</a>
+      </div>
+
+      <!-- Quick statistics row -->
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" data-target="120">0</span>+
+          <span class="stat-label">Events</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" data-target="48">0</span>+
+          <span class="stat-label">Departments</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" data-target="3200">0</span>+
+          <span class="stat-label">Students</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Floating event preview cards -->
+    <div class="hero-visual fade-in-right">
+      <div class="visual-card vc-main">
+        <div class="vc-icon">📅</div>
+        <div>
+          <div class="vc-title">Tech Symposium 2025</div>
+          <div class="vc-sub">Engineering Hall · 3 PM</div>
+        </div>
+        <span class="vc-badge">Today</span>
+      </div>
+      <div class="visual-card vc-small">
+        <div class="vc-icon">🏛️</div>
+        <div>
+          <div class="vc-title">Law Seminar Series</div>
+          <div class="vc-sub">Room 204 · Tomorrow</div>
+        </div>
+      </div>
+      <div class="visual-card vc-small">
+        <div class="vc-icon">🔬</div>
+        <div>
+          <div class="vc-title">Science Workshop</div>
+          <div class="vc-sub">Lab B · Friday</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =============================================
+       FEATURES / WHY USE CAMPUSHUB
+       ============================================= -->
+  <section class="features-section">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <p class="section-tag">Why CampusHub?</p>
+        <h2 class="section-title">Everything You Need in One Portal</h2>
+      </div>
+
+      <!-- 4-column feature grid -->
+      <div class="features-grid">
+
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🗓️</div>
+          <h3>Browse All Events</h3>
+          <p>Filter and search through every university event by date, category, or department.</p>
+        </div>
+
+        <div class="feature-card fade-up" style="animation-delay:0.1s">
+          <div class="feature-icon">📝</div>
+          <h3>Easy Registration</h3>
+          <p>Create your student account in under a minute and start managing your schedule.</p>
+        </div>
+
+        <div class="feature-card fade-up" style="animation-delay:0.2s">
+          <div class="feature-icon">📢</div>
+          <h3>Post Your Events</h3>
+          <p>Faculty and student clubs can post and manage events directly on the platform.</p>
+        </div>
+
+        <div class="feature-card fade-up" style="animation-delay:0.3s">
+          <div class="feature-icon">🔔</div>
+          <h3>Stay Updated</h3>
+          <p>Your dashboard keeps all upcoming events and deadlines in one clear view.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       UPCOMING EVENTS PREVIEW
+       ============================================= -->
+  <section class="preview-section">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <p class="section-tag">What's On</p>
+        <h2 class="section-title">Upcoming Events</h2>
+      </div>
+
+      <!-- Sample event cards (these will be loaded from DB in the backend phase) -->
+      <div class="events-grid">
+
+        <div class="event-card fade-up">
+          <div class="event-date-badge">
+            <span class="event-day">14</span>
+            <span class="event-month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-category cat-tech">Technology</span>
+            <h3 class="event-title">AI &amp; Machine Learning Summit</h3>
+            <p class="event-meta">📍 Main Auditorium &nbsp;|&nbsp; 🕑 2:00 PM</p>
+            <p class="event-desc">Explore the latest breakthroughs in artificial intelligence with industry experts.</p>
+            <a href="events.html" class="btn btn-sm">Learn More →</a>
+          </div>
+        </div>
+
+        <div class="event-card fade-up" style="animation-delay:0.1s">
+          <div class="event-date-badge badge-purple">
+            <span class="event-day">18</span>
+            <span class="event-month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-category cat-arts">Arts &amp; Culture</span>
+            <h3 class="event-title">Annual Student Art Exhibition</h3>
+            <p class="event-meta">📍 Gallery Hall &nbsp;|&nbsp; 🕑 10:00 AM</p>
+            <p class="event-desc">A showcase of creative works from talented students across all faculties.</p>
+            <a href="events.html" class="btn btn-sm">Learn More →</a>
+          </div>
+        </div>
+
+        <div class="event-card fade-up" style="animation-delay:0.2s">
+          <div class="event-date-badge badge-teal">
+            <span class="event-day">22</span>
+            <span class="event-month">JUL</span>
+          </div>
+          <div class="event-info">
+            <span class="event-category cat-science">Science</span>
+            <h3 class="event-title">Research Methodology Workshop</h3>
+            <p class="event-meta">📍 Science Block C &nbsp;|&nbsp; 🕑 9:00 AM</p>
+            <p class="event-desc">Learn how to structure and conduct academic research with senior faculty.</p>
+            <a href="events.html" class="btn btn-sm">Learn More →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- View all button -->
+      <div class="center-action fade-up">
+        <a href="events.html" class="btn btn-primary">View All Events</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       CALL-TO-ACTION BANNER
+       ============================================= -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box fade-up">
+        <h2>Ready to get started?</h2>
+        <p>Join thousands of students already using CAMPUSHUB to stay on top of campus life.</p>
+        <div class="cta-actions">
+          <a href="register.html" class="btn btn-white">Create Free Account</a>
+          <a href="events.html"   class="btn btn-ghost-white">Explore Events</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span> CampusHub
+        <p>Academic Events Management Portal</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="Index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="add-event.html">Add Event</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </div>
+
+      <p class="footer-copy">&copy; 2025 CampusHub. Built for academic excellence.</p>
+
+    </div>
+  </footer>
+
+  <!-- Link to shared JavaScript -->
+  <script src="Script.js"></script>
+
+</body>
+</html>

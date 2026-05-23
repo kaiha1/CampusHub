@@ -1,0 +1,1244 @@
+/* =====================================================
+   style.css  –  CampusHub Academic Portal
+   Shared stylesheet for ALL pages
+   Colors: Purple #6C63FF  |  White #FFFFFF  |  Light BG #F5F7FF
+   Fonts:  Syne (headings)  |  DM Sans (body)
+   ===================================================== */
+
+
+/* ─────────────────────────────────────────
+   1. CSS CUSTOM PROPERTIES (variables)
+   ───────────────────────────────────────── */
+:root {
+  /* Brand colours */
+  --primary:       #6C63FF;   /* Main purple */
+  --primary-dark:  #574bdb;   /* Darker purple for hover */
+  --primary-light: #ede9ff;   /* Very light purple tint */
+  --accent-teal:   #00c9a7;   /* Teal accent for variety */
+  --accent-rose:   #ff6584;   /* Rose accent */
+
+  /* Background & surface colours */
+  --bg:            #F5F7FF;   /* Page background */
+  --surface:       #FFFFFF;   /* Card / form background */
+  --surface-2:     #f0eeff;   /* Slightly tinted surface */
+
+  /* Text colours */
+  --text-dark:     #222831;   /* Headings */
+  --text-body:     #444c5e;   /* Body paragraphs */
+  --text-muted:    #8892a4;   /* Placeholder / secondary text */
+
+  /* Border & shadow */
+  --border:        #e2e0f5;
+  --shadow-sm:     0 2px 8px  rgba(108,99,255,.08);
+  --shadow-md:     0 8px 24px rgba(108,99,255,.13);
+  --shadow-lg:     0 16px 48px rgba(108,99,255,.18);
+
+  /* Layout */
+  --radius:        14px;
+  --radius-sm:     8px;
+  --radius-full:   9999px;
+  --nav-height:    70px;
+
+  /* Transitions */
+  --transition:    0.3s ease;
+}
+
+
+/* ─────────────────────────────────────────
+   2. RESET & BASE
+   ───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;          /* Smooth anchor scrolling */
+  font-size: 16px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-body);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* Remove default list styling */
+ul { list-style: none; }
+
+/* Remove default link decoration */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img { max-width: 100%; display: block; }
+
+/* Headings use Syne */
+h1, h2, h3, h4 {
+  font-family: 'Syne', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+
+/* ─────────────────────────────────────────
+   3. UTILITY CLASSES
+   ───────────────────────────────────────── */
+
+/* Centred max-width wrapper */
+.container {
+  width: 90%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* Centre a block of items horizontally */
+.center-action {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* ─────────────────────────────────────────
+   4. BUTTONS
+   ───────────────────────────────────────── */
+
+/* Base button style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform var(--transition),
+              box-shadow var(--transition),
+              background var(--transition),
+              color var(--transition);
+}
+
+/* Primary – solid purple */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ghost – transparent with purple border */
+.btn-ghost {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-ghost:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* White – for dark backgrounds */
+.btn-white {
+  background: #fff;
+  color: var(--primary);
+}
+.btn-white:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ghost White – for dark backgrounds */
+.btn-ghost-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.6);
+}
+.btn-ghost-white:hover {
+  background: rgba(255,255,255,.15);
+  transform: translateY(-2px);
+}
+
+/* Small button variant (used in event cards) */
+.btn-sm {
+  padding: .45rem 1.1rem;
+  font-size: .85rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-sm:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Form submit button (full width) */
+.btn-submit {
+  width: 100%;
+  justify-content: center;
+  padding: .85rem;
+  font-size: 1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.btn-submit:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ─────────────────────────────────────────
+   5. NAVIGATION BAR
+   ───────────────────────────────────────── */
+.navbar {
+  position: sticky;                 /* Stays at the top while scrolling */
+  top: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(12px);      /* Frosted-glass effect */
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+
+/* Add shadow when user scrolls (applied via JS) */
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 90%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+}
+
+/* Nav links list */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.nav-link {
+  padding: .45rem .85rem;
+  border-radius: var(--radius-full);
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--text-body);
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* Outlined "Login" link in the nav */
+.btn-outline-nav {
+  border: 1.5px solid var(--primary);
+  color: var(--primary) !important;
+}
+.btn-outline-nav:hover {
+  background: var(--primary-light) !important;
+}
+
+/* Solid "Register" link in the nav */
+.btn-primary-nav {
+  background: var(--primary);
+  color: #fff !important;
+}
+.btn-primary-nav:hover {
+  background: var(--primary-dark) !important;
+  color: #fff !important;
+}
+
+/* Hamburger (hidden on desktop, shown on mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .4rem;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Hamburger animation when menu is open */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* ─────────────────────────────────────────
+   6. HERO SECTION
+   ───────────────────────────────────────── */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  min-height: calc(100vh - var(--nav-height));
+  padding: 5rem 5% 4rem;
+  overflow: hidden;
+}
+
+/* Decorative background blobs (pure CSS shapes) */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .18;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: -100px;
+  right: -120px;
+}
+.blob-2 {
+  width: 350px;
+  height: 350px;
+  background: var(--accent-teal);
+  bottom: 60px;
+  left: -80px;
+}
+
+/* Hero text container */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+/* Small coloured badge above the heading */
+.hero-badge {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: .82rem;
+  font-weight: 500;
+  padding: .35rem .9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(108,99,255,.2);
+}
+
+/* Main headline */
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);  /* Responsive font size */
+  font-weight: 800;
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
+  color: var(--text-dark);
+}
+
+/* Purple highlighted text in heading */
+.highlight {
+  color: var(--primary);
+  position: relative;
+}
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--primary-light);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+/* CTA buttons row in hero */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+/* Stats row */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+  color: var(--primary);
+}
+.stat-label {
+  display: block;
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  margin-top: -.2rem;
+}
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+/* Right side: floating event preview cards */
+.hero-visual {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Shared visual card style */
+.visual-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  animation: floatCard 3s ease-in-out infinite;
+  transition: transform var(--transition);
+}
+.visual-card:hover { transform: translateY(-4px); }
+
+/* Large main card */
+.vc-main {
+  min-width: 280px;
+  animation-delay: 0s;
+}
+/* Smaller secondary cards */
+.vc-small {
+  min-width: 240px;
+  animation-delay: .6s;
+}
+.vc-small:last-child { animation-delay: 1.2s; }
+
+.vc-icon { font-size: 1.8rem; }
+
+.vc-title {
+  font-family: 'Syne', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.vc-sub {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: .15rem;
+}
+
+/* "Today" badge on the main card */
+.vc-badge {
+  margin-left: auto;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2rem .6rem;
+  border-radius: var(--radius-full);
+}
+
+/* Floating animation for hero cards */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+
+/* ─────────────────────────────────────────
+   7. SECTION HEADERS (reusable)
+   ───────────────────────────────────────── */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Small coloured tag above section title */
+.section-tag {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: .82rem;
+  font-weight: 500;
+  padding: .3rem .9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: .75rem;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+
+/* ─────────────────────────────────────────
+   8. FEATURES SECTION
+   ───────────────────────────────────────── */
+.features-section {
+  padding: 5rem 0;
+  background: var(--surface);
+}
+
+/* 4-column responsive grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: .5rem;
+}
+
+.feature-card p {
+  font-size: .9rem;
+  color: var(--text-muted);
+}
+
+
+/* ─────────────────────────────────────────
+   9. EVENTS PREVIEW SECTION
+   ───────────────────────────────────────── */
+.preview-section {
+  padding: 5rem 0;
+  background: var(--bg);
+}
+
+/* 3-column responsive events grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual event card */
+.event-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Coloured date badge on the left */
+.event-date-badge {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 64px;
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+.event-date-badge.badge-purple { background: #ede9ff; }
+.event-date-badge.badge-teal   { background: #d0faf4; }
+
+.event-day {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+.event-month {
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.event-info { flex: 1; }
+
+/* Category pill */
+.event-category {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2rem .65rem;
+  border-radius: var(--radius-full);
+  margin-bottom: .4rem;
+}
+.cat-tech    { background: #ede9ff; color: var(--primary); }
+.cat-arts    { background: #ffe4ec; color: #c4376c; }
+.cat-science { background: #d0faf4; color: #0e7f69; }
+.cat-business{ background: #fff7d6; color: #9a6e00; }
+.cat-sport   { background: #ffe8d6; color: #b84c00; }
+
+.event-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: .35rem;
+  color: var(--text-dark);
+}
+
+.event-meta {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin-bottom: .5rem;
+}
+
+.event-desc {
+  font-size: .85rem;
+  color: var(--text-body);
+  margin-bottom: .9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;        /* Show max 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/* ─────────────────────────────────────────
+   10. CALL-TO-ACTION BANNER
+   ───────────────────────────────────────── */
+.cta-section {
+  padding: 4rem 0;
+  background: var(--surface);
+}
+
+.cta-box {
+  background: linear-gradient(135deg, var(--primary) 0%, #8b7ff5 100%);
+  border-radius: calc(var(--radius) * 1.5);
+  padding: 3.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-box h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #fff;
+  margin-bottom: .75rem;
+}
+
+.cta-box p {
+  font-size: 1.05rem;
+  opacity: .88;
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* ─────────────────────────────────────────
+   11. FOOTER
+   ───────────────────────────────────────── */
+.footer {
+  background: var(--text-dark);
+  color: rgba(255,255,255,.7);
+  padding: 2.5rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .3rem;
+}
+.footer-brand p {
+  font-size: .82rem;
+  font-weight: 400;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,.55);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links a {
+  font-size: .88rem;
+  color: rgba(255,255,255,.65);
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: #fff; }
+
+.footer-copy {
+  font-size: .78rem;
+  color: rgba(255,255,255,.4);
+}
+
+
+/* ─────────────────────────────────────────
+   12. FORM PAGES  (login, register, reset)
+   ───────────────────────────────────────── */
+
+/* Outer wrapper that vertically centres the form card */
+.auth-wrapper {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: var(--bg);
+}
+
+/* White form card */
+.auth-card {
+  background: var(--surface);
+  border-radius: calc(var(--radius) * 1.4);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2.75rem;
+  width: 100%;
+  max-width: 460px;
+}
+
+/* Icon / emoji at top of form */
+.auth-icon {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: .75rem;
+}
+
+.auth-card h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: .4rem;
+}
+
+/* Subtitle text under the heading */
+.auth-subtitle {
+  text-align: center;
+  font-size: .9rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Wrapper for each label + input pair */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: .45rem;
+}
+
+/* Base input / select / textarea */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: .75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  color: var(--text-dark);
+  background: var(--bg);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+/* Purple focus ring */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108,99,255,.12);
+}
+
+/* Textarea specific */
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Password field wrapper (to position the toggle icon) */
+.input-password-wrapper {
+  position: relative;
+}
+.input-password-wrapper input {
+  padding-right: 2.8rem;
+}
+
+/* Show/hide password button */
+.toggle-password {
+  position: absolute;
+  right: .9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+.toggle-password:hover { color: var(--primary); }
+
+/* Two-column grid inside a form (first-name / last-name) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Helper text below an input */
+.form-hint {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: .35rem;
+}
+
+/* Error message text (shown by JS) */
+.form-error {
+  font-size: .8rem;
+  color: #e53935;
+  margin-top: .3rem;
+  display: none;   /* hidden by default; JS shows it */
+}
+
+/* Small checkbox + label row */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin-bottom: 1.2rem;
+}
+.form-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: .2rem;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+.form-check label {
+  font-size: .85rem;
+  color: var(--text-body);
+  margin-bottom: 0;
+}
+
+/* Divider with centred text ("or continue with") */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 1.25rem 0;
+  color: var(--text-muted);
+  font-size: .82rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Footer link row at bottom of form card */
+.auth-footer {
+  text-align: center;
+  font-size: .87rem;
+  color: var(--text-muted);
+  margin-top: 1.25rem;
+}
+.auth-footer a {
+  color: var(--primary);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.auth-footer a:hover { color: var(--primary-dark); }
+
+/* Password strength bar */
+.strength-bar-wrapper {
+  display: flex;
+  gap: .3rem;
+  margin-top: .5rem;
+}
+.strength-segment {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: background var(--transition);
+}
+
+/* Alert / info box (used on reset-password page) */
+.info-box {
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  background: var(--primary-light);
+  border: 1px solid rgba(108,99,255,.2);
+  border-radius: var(--radius-sm);
+  padding: .85rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: .88rem;
+  color: var(--primary-dark);
+}
+.info-box .info-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+/* Success state for reset-password page */
+.success-box {
+  text-align: center;
+  padding: 1.5rem 0;
+  display: none;  /* shown by JS after form submit */
+}
+.success-box .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+.success-box h3 { margin-bottom: .5rem; }
+.success-box p  { color: var(--text-muted); font-size: .9rem; }
+
+
+/* ─────────────────────────────────────────
+   13. EVENTS LISTING PAGE
+   ───────────────────────────────────────── */
+
+/* Page hero banner */
+.page-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #8b7ff5 100%);
+  color: #fff;
+  padding: 3.5rem 5%;
+  text-align: center;
+}
+.page-hero h1 {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: .5rem;
+}
+.page-hero p {
+  opacity: .85;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Search + filter bar */
+.filter-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 5%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 100;
+}
+
+/* Search field inside filter bar */
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.search-input-wrap .search-icon {
+  position: absolute;
+  left: .9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+}
+.search-input-wrap input {
+  width: 100%;
+  padding: .6rem 1rem .6rem 2.4rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  background: var(--bg);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.search-input-wrap input:focus { border-color: var(--primary); }
+
+/* Category filter pills */
+.filter-pills {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.pill {
+  padding: .4rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: .82rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-body);
+  transition: all var(--transition);
+}
+.pill:hover,
+.pill.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Events listing layout */
+.events-listing {
+  padding: 2.5rem 5%;
+}
+
+/* Full-width event list cards (different from 3-col grid) */
+.event-list-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  align-items: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.event-list-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.event-list-info { flex: 1; }
+.event-list-actions { flex-shrink: 0; }
+
+
+/* ─────────────────────────────────────────
+   14. ADD EVENT PAGE
+   ───────────────────────────────────────── */
+.add-event-wrapper {
+  min-height: calc(100vh - var(--nav-height));
+  background: var(--bg);
+  padding: 3rem 1rem;
+}
+
+/* Wider card for the add-event form */
+.add-event-card {
+  background: var(--surface);
+  border-radius: calc(var(--radius) * 1.4);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2.75rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.add-event-card h2 {
+  margin-bottom: .3rem;
+}
+
+.add-event-card .auth-subtitle {
+  margin-bottom: 1.75rem;
+}
+
+/* Section divider inside the form */
+.form-section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .5rem;
+  margin: 1.75rem 0 1.25rem;
+}
+
+
+/* ─────────────────────────────────────────
+   15. ANIMATIONS
+   ───────────────────────────────────────── */
+
+/* Fade in from below */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUp .6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in from left */
+.fade-in {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: fadeInLeft .7s ease .1s forwards;
+}
+
+@keyframes fadeInLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade in from right (hero visual) */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: fadeInRight .7s ease .2s forwards;
+}
+
+@keyframes fadeInRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ─────────────────────────────────────────
+   16. RESPONSIVE / MOBILE
+   ───────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 900px) {
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 5%;
+    min-height: auto;
+  }
+
+  .hero-actions,
+  .hero-stats { justify-content: center; }
+
+  .hero-visual { align-items: center; }
+
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+
+  /* Show hamburger, hide links */
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 1rem;
+    gap: .5rem;
+  }
+  .nav-links.open { display: flex; }
+
+  .auth-card,
+  .add-event-card { padding: 1.75rem 1.25rem; }
+
+  .cta-box { padding: 2rem 1.25rem; }
+
+  .filter-bar { position: static; }
+
+  .event-list-card { flex-direction: column; align-items: flex-start; }
+}
